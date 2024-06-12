@@ -1,13 +1,6 @@
 pipeline {
     agent any
-    stages{
-        stage('Checkout') {
-            steps {
-                // Checkout code from Git
-                git url: 'https://github.com/your-username/your-repo.git', branch: 'main'
-            }
-        }
-    
+    stages{    
         stage('Build & Login') {
             steps {
                 // Build & Login to Docker Hub
@@ -16,15 +9,6 @@ pipeline {
                     sh "docker login -u ankushdeep653 -p panesarworld"
                 }
             }
-        }
-       stage('Test') {
-           steps {
-                //Run unit tests
-                script{
-                    sh 'npm install'
-                    sh 'npm test'
-                }
-           }
         }
         stage('Push to Registry') {
             steps {
