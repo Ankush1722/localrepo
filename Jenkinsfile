@@ -1,13 +1,6 @@
 pipeline {
     agent any
     
-    stages {
-        stage('Checkout') {
-            steps {
-                // Checkout code from Git
-                git url: 'https://github.com/Ankush1722/localrepo.git', branch: 'main'
-            }
-        }
         stage('Build & Login') {
             steps {
                 // Build & Login to Docker Hub
