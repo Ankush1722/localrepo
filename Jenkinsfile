@@ -9,7 +9,7 @@ pipeline {
                 script {
                     // Build & Login to Docker Hub
                     sh 'docker build -t ankushdeep653/my-app:node-1.0 .'
-                    withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', usernameVari>
+                    withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
                         sh "docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD}"
                     }
                 }
