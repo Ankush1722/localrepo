@@ -4,6 +4,11 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials('docker-hub-repo')
     }
     stages {
+        stage('Checkout') {
+            steps {
+                git url: 'https:github.com/Ankush1722/localrepo.git', branch: 'main'
+            }
+        }
         stage('Build & Login') {
             steps {
                 script {
