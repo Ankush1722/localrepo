@@ -6,7 +6,7 @@ pipeline {
                 // Build & Login to Docker Hub
                 script {
                     sh 'docker build -t ankushdeep653/my-app:node-1.0 .'
-                    sh "docker login -u ankushdeep653 -p panesarworld"
+                    sh 'docker login -u ankushdeep653 -p panesarworld'
                 }
             }
         }
