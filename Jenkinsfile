@@ -24,7 +24,7 @@ pipeline {
                 // This can be customized based on your deployment strategy
                 script{
                     sh 'docker system prune -af'
-                    sh 'docker pull akushdeep653/my-app:node-1.0'
+                    sh 'docker pull ankushdeep653/my-app:node-1.0'
                     sh 'docker run --name nodeapp -d -p 3000:3000 ankushdeep653/my-app:node-1.0'
                 }
 
