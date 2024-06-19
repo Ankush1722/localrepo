@@ -1,33 +1,37 @@
+  GNU nano 6.2                                                                                                                                                                      jenkinsfile                                                                                                                                                                                
 pipeline {
     agent any
-    stages{    
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials('docker-hub-repo')
+    }
+    stages {
         stage('Build & Login') {
             steps {
-                // Build & Login to Docker Hub
                 script {
+                    // Build & Login to Docker Hub
                     sh 'docker build -t ankushdeep653/my-app:node-1.0 .'
-                    sh 'docker login -u ankushdeep653 -p panesarworld'
+                    withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
+                        sh "docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD}"
+                    }
                 }
             }
         }
         stage('Push to Registry') {
             steps {
-                // Push Docker image to registry
                 script {
+                    // Push Docker image to registry
                     sh 'docker push ankushdeep653/my-app:node-1.0'
                 }
             }
         }
         stage('Deploy') {
             steps {
-                // Deploy application (e.g., using SSH to remote server or using a deployment tool)
-                // This can be customized based on your deployment strategy
-                script{
+                script {
+                    // Deploy application
                     sh 'docker system prune -af'
                     sh 'docker pull ankushdeep653/my-app:node-1.0'
                     sh 'docker run --name nodeapp -d -p 3000:3000 ankushdeep653/my-app:node-1.0'
                 }
-
             }
         }
     }
@@ -40,3 +44,4 @@ pipeline {
         }
     }
 }
+
