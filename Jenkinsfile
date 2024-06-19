@@ -1,4 +1,3 @@
-  GNU nano 6.2                                                                                                                                                                      jenkinsfile                                                                                                                                                                                
 pipeline {
     agent any
     environment {
