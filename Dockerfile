@@ -8,4 +8,4 @@ RUN npm install -y
 
 EXPOSE 3000
 
-ENTRYPOINT npm start
+CMD ["npm", "start"]
