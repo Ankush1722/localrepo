@@ -1,6 +1,6 @@
 {
-  "name": "project",
-  "version": "1.0.0",
+  "name": "localrepo",
+  "version": "20.14.0",
   "main": "index.js",
   "scripts": {
     "start": "node ./index.js",
