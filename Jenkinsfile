@@ -23,8 +23,8 @@ pipeline {
                 // Deploy application (e.g., using SSH to remote server or using a deployment tool)
                 // This can be customized based on your deployment strategy
                 script{
-                    sh 'docker pull akushdeep653/my-app'
-                    sh 'docker run --name nodeapp -d -p 3000:3000 ankushdeep653/my-app'
+                    sh 'docker pull akushdeep653/my-app:node-1.0'
+                    sh 'docker run --name nodeapp -d -p 3000:3000 ankushdeep653/my-app:node-1.0'
                 }
 
             }
