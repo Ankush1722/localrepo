@@ -20,6 +20,11 @@ pipeline {
                 }
             }
         }
+        stage('Test') {
+            steps {
+                sh 'npm test'
+            }
+        }       
         stage('Push to Registry') {
             steps {
                 script {
