@@ -19,7 +19,14 @@ pipeline {
                     }
                 }
             }
-        }      
+        }
+        stage('Test') {
+            steps {
+                script {
+                    sh 'npm test'
+                }
+            }
+        }
         stage('Push to Registry') {
             steps {
                 script {
